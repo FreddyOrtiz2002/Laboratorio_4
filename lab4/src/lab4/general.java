@@ -13,9 +13,11 @@ File archivo;
 String[] NombreColumnasTablaMortalidad={"nombre","promedio","aprovacion"};
 String[] NombreColumnasTablaNotas;
 Object[][] tamaño;
+String[][] datosTablaMortalidad;
     public general(int Cantestudiantes, int Cantnotas) {
         this.Cantestudiantes = Cantestudiantes;
         this.Cantnotas = (Cantnotas+1);
+        //se define la primera tabla
         NombreColumnasTablaNotas=new String[(Cantnotas+1)];
         tamaño=new Object[this.Cantestudiantes][this.Cantnotas];
        NombreColumnasTablaNotas[0]="nombres";
@@ -31,15 +33,15 @@ Object[][] tamaño;
         {
             NombreColumnasTablaNotas[i]="nota"+i;
         }
-        String[] nuevafila=new String[this.Cantnotas];
-        DefaultTableModel modelo=(DefaultTableModel) tablaMortalidad.getModel();
-        for(int i=0;i<this.Cantnotas;i++)
+        //se define la tabla de mortalidad
+        
+        datosTablaMortalidad=new String[Cantestudiantes][3];
+        for(int i=0;i<Cantestudiantes;i++)
         {
-            nuevafila[i]="";
-        }
-        for(int i=0;i<this.Cantestudiantes;i++)
-        {
-            modelo.addRow(nuevafila);
+            for(int j=0;j<3;j++)
+            {
+             datosTablaMortalidad[i][j]="";   
+            }
         }
         initComponents();
         
