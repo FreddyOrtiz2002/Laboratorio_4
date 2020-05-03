@@ -226,31 +226,21 @@ String[][] datosTablaMortalidad;
     String nombre = null;
     float[] notas=new float[(Cantnotas-1)];
         for(int i=0;i<Cantestudiantes;i++)
-    {
-        for(int j=0;j>Cantnotas;j++)
-        {
-            if(i==0 && j==0)
             {
-                nombre=tablaNotas.getValueAt(i, j).toString();
-            }else
-            {
-                notas[j]=Float.parseFloat(tablaNotas.getValueAt(i, j).toString());
+                for(int j=0;j<Cantnotas;j++)
+                {
+                    if(j==0)
+                    {
+                        nombre=tablaNotas.getValueAt(i, j).toString();
+                    }else if(j>0)
+                    {
+                        notas[j-1]=Float.parseFloat(tablaNotas.getValueAt(i, j).toString());
+                    } 
+                }
+                estudiante=new Estudiante(nombre,notas);
+                curso.add(estudiante);        
             }
-        }
-        estudiante=new Estudiante(nombre,notas);
-    }
-        for(int i=0;i<Cantestudiantes;i++)
-        {
-            tablaMortalidad.setValueAt((Object)curso.get(i).Nombre, i, 0);
-            tablaMortalidad.setValueAt((Object)curso.get(i).promedio, i, 1);
-            if(curso.get(i).promedio>30)
-            {
-                tablaMortalidad.setValueAt((Object)"Aprobo", i, 2);
-            }else
-            {
-                tablaMortalidad.setValueAt((Object)"Reprobo", i, 2);
-            }
-        }
+      //Falta ingresar valores a la tabla de mortalidad  
         
         
         
